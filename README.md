@@ -1,78 +1,73 @@
-# Ophthalmologic Data Analysis
+# Rapport de Stage 2024
 
-## Table of Contents
+## Machine Learning-Based Decision Support in Ophthalmology
 
-- [Introduction](#introduction)
-- [Dataset Description](#dataset-description)
-- [Goal](#goal)
-- [Preprocessing](#preprocessing)
-- [Machine Learning Models](#machine-learning-models)
-  - [Logistic Regression with ADASYN](#logistic-regression-with-adasyn)
-  - [Random Forest with ADASYN](#random-forest-with-adasyn)
-  - [SVM with ADASYN](#svm-with-adasyn)
-  - [SVM with SMOTE](#svm-with-smote)
-  - [SVM with RandomOverSampler](#svm-with-randomoversampler)
-  - [SVM with SMOTE-ENN](#svm-with-smote-enn)
-- [Results](#results)
-- [Usage](#usage)
-- [Contact](#contact)
+Ce dépôt contient le code et les résultats du stage réalisé à l'**Université Polytechnique de Catalogne (UPC)**, au sein du groupe de recherche **SOCO (Soft Computing)**, dans le cadre du projet intitulé **Eye-AI**. Ce projet vise à développer des outils d'aide à la décision basés sur l'apprentissage automatique pour analyser les images multi-modales de la vascularité rétinienne.
 
-## Introduction
+---
 
-This project focuses on analyzing ophthalmologic data using various machine learning techniques. The primary goal is to classify patients into different classes based on their ophthalmologic data. The data preprocessing steps, machine learning models, and the application of different oversampling techniques are thoroughly documented.
+## 📋 Objectifs
 
-## Dataset Description
+- **Problématique :** Résoudre le problème de déséquilibre des classes dans des ensembles de données d'imagerie médicale afin d'améliorer les performances des modèles de machine learning.
+- **Méthodes utilisées :**
+  - Techniques de suréchantillonnage (SMOTE, Borderline-SMOTE, ADASYN, etc.).
+  - Évaluation des performances des modèles via des métriques adaptées (Macro Accuracy).
+  - Visualisation des régions de décision pour une meilleure interprétabilité.
 
-The dataset used in this project is an ophthalmologic dataset. It includes features extracted from patients' ophthalmologic exams, with the aim of classifying them into different categories:
+---
 
-- `CLASE`: The original class label.
-- `OJO`: Eye identifier.
-- `USER`: User identifier.
-- Additional features representing various ophthalmologic metrics.
+## 📂 Structure du Projet
 
-### New Classes
+### 1. Analyse des Données
+- **Description des données :** Images OCT et OCTA représentant différentes pathologies liées à la rétinopathie diabétique.
+- **Problèmes abordés :**
+  - **Problème B (DR)** : Diabétiques sans rétinopathie vs. diabétiques avec rétinopathie.
+  - **Problème C (RFDR)** : Diabétiques avec rétinopathie légère vs. rétinopathie sévère.
+- **Étapes de préparation :**
+  - Prétraitement réalisé (par le tuteur).
+  - Analyse des classes pour identifier les déséquilibres.
 
-The original classes are redefined as follows:
-- Class 1 remains Class 1.
-- Classes 2, 3, and 4 are merged into a new Class 2.
+### 2. Méthodes de Suréchantillonnage
+- **Techniques mises en œuvre :**
+  - SMOTE (Synthetic Minority Over-sampling Technique).
+  - Borderline-SMOTE.
+  - ADASYN (Adaptive Synthetic Sampling).
+  - Combinaisons SMOTEENN.
+- **Impact :** Équilibrage des données pour réduire les biais des modèles.
 
-## Goal
+### 3. Implémentation en Python
+- **Bibliothèques utilisées :**
+  - `imbalanced-learn` pour les méthodes de suréchantillonnage.
+  - `scikit-learn` pour l'entraînement et l'évaluation des modèles.
+  - `matplotlib` et `seaborn` pour les visualisations.
+- **Modèles testés :**
+  - Régression logistique.
+  - Support Vector Machines (SVM).
+  - Random Forest.
 
-The primary goal of this project is to classify patients into two classes using various machine learning models and oversampling techniques to handle class imbalance. The models evaluated include Logistic Regression, Random Forest, and SVM. The oversampling techniques applied include ADASYN, SMOTE, RandomOverSampler, and SMOTE-ENN.
+### 4. Résultats
+- Visualisation des régions de décision avant et après suréchantillonnage.
+- Comparaison des performances entre les modèles et les méthodes :
+  - Macro Accuracy : amélioration significative après application d'ADASYN.
+  - Meilleures performances obtenues avec le modèle SVM et ADASYN.
 
-## Preprocessing
+---
 
-The preprocessing steps include:
-1. Loading the dataset.
-2. Creating new classes.
-3. Splitting the data into training and testing sets.
+## 🌟 Points Forts
+- Approche innovante pour traiter les déséquilibres dans des données critiques.
+- Visualisation intuitive des régions de décision et des impacts des techniques.
+- Contributions à un projet de recherche en ophtalmologie avec des implications réelles.
 
-## Machine Learning Models
+---
 
-### Logistic Regression with ADASYN
+## 👤 Auteur
+- **Jaheer Goulam**
+- Tuteurs : Prof. Angela Nebot, Dr. Enrique Romero
+- [Profil GitHub](https://github.com/RealXonatic)
 
-Logistic Regression is trained using the ADASYN oversampling technique to handle class imbalance. The steps include cross-validation, training, and evaluation.
+Pour toute question ou collaboration, n'hésitez pas à me contacter !
 
-### Random Forest with ADASYN
+---
 
-Random Forest classifier is applied with the ADASYN oversampling technique. The model undergoes cross-validation, training, and evaluation.
-
-### SVM with ADASYN
-
-Support Vector Machine (SVM) is trained using the ADASYN oversampling technique. Cross-validation is performed to find the best parameters, followed by training and evaluation.
-
-### SVM with SMOTE
-
-SVM is applied with the SMOTE oversampling technique. Cross-validation, training, and evaluation are performed.
-
-### SVM with RandomOverSampler
-
-SVM is used with RandomOverSampler to handle class imbalance. The model undergoes cross-validation, training, and evaluation.
-
-### SVM with SMOTE-ENN
-
-SVM is trained using the SMOTE-ENN technique, which combines oversampling and undersampling to handle class imbalance. Cross-validation, training, and evaluation are performed.
-
-## Results
-
-The results of the different models and oversampling techniques are combined and sorted by macro accuracy. The final results are saved in a CSV file.
+## 📊 Ressources
+Les données et les scripts sont disponibles dans le dépôt GitHub principal : [Oversampling-for-Ophtamologic-data](https://github.com/RealXonatic/Oversampling-for-Ophtamologic-data).
